@@ -12,7 +12,7 @@
 
 ![Скриншот](img/2.JPG)
   
-[Файл deployment](img/1/nginx-deployment.yaml)
+[Файл deployment](img/1/nginx-deployment.yaml)  
 [Файл service](img/1/svc_1.yaml)
 
 ### Задание 2
@@ -23,5 +23,5 @@
 
 ![Скриншот](img/3.JPG)
 
-[Файл deployment](img/2/nginx-deployment2.yaml)
+[Файл deployment](img/2/nginx-deployment2.yaml)  
 [Файл service](img/2/svc_2.yaml)
