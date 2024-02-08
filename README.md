@@ -10,7 +10,7 @@
 ![Скриншот](img/1.JPG)  
   
 [Файл nginx-deployment](img/1/nginx-deployment.yaml)  
-[Файл multitool-deployment](img/1/multitool-deployment.yaml.yaml)  
+[Файл multitool-deployment](img/1/multitool-deployment.yaml)  
 [Файл service](img/1/svc_2.yaml)  
 
 ### Задание 2
