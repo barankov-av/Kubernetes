@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: busybox-multitool-deployment
+  namespace: lesson3
   labels:
     app: busybox-multitool
 spec:
@@ -29,4 +30,33 @@ spec:
           mountPath: /input
       volumes:
       - name: my-volume
-        emptyDir: {}
+        persistentVolumeClaim:
+          claimName: pvc-manual
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-manual
+  namespace: lesson3
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-manual
+spec:
+  capacity:
+    storage: 100Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /data/pv
+  persistentVolumeReclaimPolicy: Recycle
