@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-multitool-deployment
+  labels:
+    app: nginx-multitool
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-multitool
+  template:
+    metadata:
+      labels:
+        app: nginx-multitool
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+      - name: multitool
+        image: praqma/network-multitool
+        env:
+        - name: containerPort
+          valueFrom:
+            configMapKeyRef:
+              name: my-configmap
+              key: containerPort
+        - name: HTTP_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: my-configmap
+              key: HTTP_PORT
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-configmap
+data:
+  containerPort: "8080"
+  HTTP_PORT: "8080"
