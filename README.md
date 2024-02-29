@@ -12,7 +12,7 @@
 4. Сделать простую веб-страницу и подключить её к Nginx с помощью ConfigMap. Подключить Service и показать вывод curl или в браузере.  
 5. Предоставить манифесты, а также скриншоты или вывод необходимых команд.  
 
-![Скриншот](img/1/4.JPG)  
+![Скриншот](img/1/1.4.JPG)  
 
 [Файл deployment](img/1/nginx-tool-deployment5.yaml)  
 [Файл service](img/1/svc_3.yaml)  
@@ -30,6 +30,6 @@
 
 ![Скриншот](img/2/2.JPG)
 
-[Файл deployment](img/2/nginx-deployment2.yaml)
+[Файл deployment](img/2/nginx-deployment2.yaml)  
 [Файл ingress и service](img/2/ingress2.yaml)
 
