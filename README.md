@@ -1,35 +1,19 @@
-# Домашнее задание к занятию "8. Конфигурация приложений" - Баранков Антон"
+# Домашнее задание к занятию "9. Управление доступом" - Баранков Антон"
 
 ### Задание 1.
-1. Создать Deployment приложения, состоящего из контейнеров nginx и multitool.  
-2. Решить возникшую проблему с помощью ConfigMap.  
-3. Продемонстрировать, что pod стартовал и оба конейнера работают.  
+1. Создайте и подпишите SSL-сертификат для подключения к кластеру.
+2. Настройте конфигурационный файл kubectl для подключения.
+3. Создайте роли и все необходимые настройки для пользователя.
+4. Предусмотрите права пользователя. Пользователь может просматривать логи подов и их конфигурацию (kubectl logs pod <pod_id>, kubectl describe pod <pod_id>).
+5. Предоставьте манифесты и скриншоты и/или вывод необходимых команд.
 
-![Скриншот](img/1/1.3.JPG)  
+```
+openssl genrsa -out oleg.key 2048
+openssl req -new -key oleg.key -out oleg.csr -subj "/CN=oleg/O=ops"
+openssl x509 -req -in oleg.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out oleg.crt -days 30
+kubectl config set-credentials oleg --client-certificate oleg.crt --client-key oleg.key --embed-certs=true
+kubectl config set-context oleg_context --cluster=microk8s-cluster --user=oleg
+```
+[Файл role1.yaml](img/role1.yaml)  
 
-[Файл deployment](img/1/nginx-tool-deployment3.yaml)  
-
-4. Сделать простую веб-страницу и подключить её к Nginx с помощью ConfigMap. Подключить Service и показать вывод curl или в браузере.  
-5. Предоставить манифесты, а также скриншоты или вывод необходимых команд.  
-
-![Скриншот](img/1/1.4.JPG)  
-
-[Файл deployment](img/1/nginx-tool-deployment5.yaml)  
-[Файл service](img/1/svc_3.yaml)  
-
-### Задание 2
-1. Создать Deployment приложения, состоящего из Nginx.
-2. Создать собственную веб-страницу и подключить её как ConfigMap к приложению.
-3. Выпустить самоподписной сертификат SSL. Создать Secret для использования сертификата.
-4. Создать Ingress и необходимый Service, подключить к нему SSL в вид. Продемонстировать доступ к приложению по HTTPS.
-5. Предоставить манифесты, а также скриншоты или вывод необходимых команд.
-
-![Скриншот](img/2/1.JPG)
-
-![Скриншот](img/2/1.1.JPG)
-
-![Скриншот](img/2/2.JPG)
-
-[Файл deployment](img/2/nginx-deployment2.yaml)  
-[Файл ingress и service](img/2/ingress2.yaml)
-
+![Скриншот](img/1.JPG)
