@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.deployment_name.two }}
+  labels:
+    app: {{ .Values.labels.two }}
+spec:  
+  replicas: {{ .Values.replicaCount.two }}  
+  selector:
+    matchLabels:
+      app: {{ .Values.labels.two }}
+  template:
+    metadata:      
+      labels:
+        app: {{ .Values.labels.two }} 
+    spec:
+      containers:
+        - name: {{ .Values.image_n.name }}          
+          image: "{{ .Values.image_n.repository }}:{{ .Values.image_n.tag | default .Chart.AppVersion }}"          
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.service_name.two }}
+spec:
+  selector:
+    app: {{ .Values.labels.two }}
+  ports:
+  - protocol: TCP
+    port: {{ .Values.service.port }}
+    targetPort: {{ .Values.service.targetport }}

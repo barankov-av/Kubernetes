@@ -1,0 +1,34 @@
+replicaCount: 
+  one: 1
+  two: 1
+
+deployment_name: 
+  one: backend-deployment
+  two: frontend-deployment
+
+service_name: 
+  one: backend-service
+  two: frontend-service
+
+ingress_name: ingress
+
+labels: 
+  one: backend
+  two: frontend
+  
+image_m:
+  name: multitool
+  repository: wbitt/network-multitool
+  tag: "1.3.3"
+
+image_n:
+  name: nginx
+  repository: nginx
+  tag: "1.14.2"
+
+service:
+  type: ClusterIP
+  port: 80
+  targetport: 80
+
+ingress_port: 80

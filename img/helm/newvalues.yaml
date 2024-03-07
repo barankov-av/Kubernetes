@@ -1,0 +1,26 @@
+image_m:
+  name: multitool
+  repository: wbitt/network-multitool
+  tag: "1.3.4"
+
+image_n:
+  name: nginx
+  repository: nginx
+  tag: "1.15.0"
+
+deployment_name: 
+  one: backend-deployment2
+  two: frontend-deployment2
+
+service_name: 
+  one: backend2-service
+  two: frontend2-service
+
+ingress_name: ingress2
+
+labels: 
+  one: backend2
+  two: frontend2
+
+ingress_port: 3080
+
